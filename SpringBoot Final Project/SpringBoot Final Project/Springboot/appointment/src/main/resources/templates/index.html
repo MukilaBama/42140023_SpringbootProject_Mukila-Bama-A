@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clinic Appointment System</title>
+    <style>
+        /* Modern CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        body {
+    background: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            color: #1976d2;
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 28px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 20px;
+            background-color: #1976d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(25, 118, 210, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #1565c0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(25, 118, 210, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn.book {
+            background-color: #2e7d32;
+            box-shadow: 0 4px 6px rgba(46, 125, 50, 0.2);
+        }
+
+        .btn.book:hover {
+            background-color: #1b5e20;
+            box-shadow: 0 6px 8px rgba(46, 125, 50, 0.3);
+        }
+
+        .btn.waitlist {
+            background-color: #ff9800;
+            box-shadow: 0 4px 6px rgba(255, 152, 0, 0.2);
+        }
+
+        .btn.waitlist:hover {
+            background-color: #f57c00;
+            box-shadow: 0 6px 8px rgba(255, 152, 0, 0.3);
+        }
+
+        .btn.status {
+            background-color: #7b1fa2;
+            box-shadow: 0 4px 6px rgba(123, 31, 162, 0.2);
+        }
+
+        .btn.status:hover {
+            background-color: #6a1b9a;
+            box-shadow: 0 6px 8px rgba(123, 31, 162, 0.3);
+        }
+
+        .btn.admin {
+            background-color: #d32f2f;
+            box-shadow: 0 4px 6px rgba(211, 47, 47, 0.2);
+        }
+
+        .btn.admin:hover {
+            background-color: #b71c1c;
+            box-shadow: 0 6px 8px rgba(211, 47, 47, 0.3);
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .hospital-icon {
+            width: 60px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+
+            .btn {
+                padding: 12px 15px;
+                font-size: 15px;
+            }
+
+            body {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Hospital icon from Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <!-- Hospital icon -->
+    <i class="fas fa-hospital-alt hospital-icon" style="color: #1976d2; font-size: 2.5rem;"></i>
+
+    <h1>Apex Health Appointment System</h1>
+
+    <div class="btn-grid">
+        <a href="/register" class="btn book">
+            <i class="fas fa-calendar-check"></i> Book Appointment
+        </a>
+        <a href="/waitlist?slot=evening" class="btn waitlist">
+            <i class="fas fa-clipboard-list"></i> Check Waitlist
+        </a>
+        <a href="/status" class="btn status">
+            <i class="fas fa-search"></i> View Appointment Status
+        </a>
+        <a href="/admin/search" class="btn admin">
+            <i class="fas fa-lock"></i> Admin Portal
+        </a>
+    </div>
+</div>
+</body>
+</html>

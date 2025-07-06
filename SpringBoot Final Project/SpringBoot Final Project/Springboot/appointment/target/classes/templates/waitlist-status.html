@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Waitlist Status | MedCare Clinic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f7ff, #e1f0ff);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #2c3e50;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(47, 128, 237, 0.1);
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hospital-icon {
+            font-size: 2.5rem;
+            color: #2e86de;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #2e86de;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #7f8c8d;
+            font-weight: 400;
+        }
+
+        .status-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .status-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #2e86de;
+            text-align: left;
+        }
+
+        .status-card.morning {
+            border-left-color: #f39c12;
+        }
+
+        .status-card.evening {
+            border-left-color: #9b59b6;
+        }
+
+        .status-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-value {
+            font-size: 32px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .patient-info {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+            border-left: 4px solid #2ecc71;
+        }
+
+        .info-text {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #2e86de;
+        }
+
+        .time-highlight {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background-color: #2e86de;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #1a73e8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 134, 222, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            .status-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .status-value {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .status-card, .patient-info {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <i class="fas fa-clipboard-list hospital-icon"></i>
+        <h2>Waitlist Status</h2>
+        <p class="subtitle">Current patient queue information</p>
+    </div>
+
+    <div class="status-container">
+        <div class="status-card morning">
+            <div class="status-title">
+                <i class="fas fa-sun"></i>
+                Morning Session
+            </div>
+            <div class="status-value" th:text="${morningCount}">0</div>
+            <div class="status-title">patients waiting</div>
+        </div>
+
+        <div class="status-card evening">
+            <div class="status-title">
+                <i class="fas fa-moon"></i>
+                Evening Session
+            </div>
+            <div class="status-value" th:text="${eveningCount}">0</div>
+            <div class="status-title">patients waiting</div>
+        </div>
+    </div>
+
+    <div class="patient-info">
+        <p class="info-text">Your selected time slot:</p>
+        <p class="time-highlight" th:text="${selectedSlot}">N/A</p>
+        <p class="info-text" style="margin-top: 10px;">Average wait time: <span class="highlight">15-20 minutes</span></p>
+    </div>
+
+    <a href="/" class="btn">
+        <i class="fas fa-home"></i> Return to Home
+    </a>
+</div>
+</body>
+</html>
+
